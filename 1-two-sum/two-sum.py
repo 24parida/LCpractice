@@ -6,9 +6,11 @@ class Solution(object):
         :rtype: List[int]
         """
 
-        sol = set()
+        val = {}
+
+
         for x, y in enumerate(nums):
-            if target-y in sol: 
-                return [x, [i for i in range(len(nums)) if nums[i] == target-y][0]]
-            else: sol.add(y)
+            if target-y in val: return [x, val[target-y]]
+            val [y] = x
+
         
