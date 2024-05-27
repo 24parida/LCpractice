@@ -8,11 +8,8 @@ class Solution(object):
         arr = [[] for i in range(len(nums) + 1)]
         count = Counter(nums)
         
-        for i in count:
-            arr[count[i]].append(i)
+        for i in count: arr[count[i]].append(i)
         
-        print(arr)
-
         res = []
         for i in arr[::-1]:
             if len(i) != 0:
