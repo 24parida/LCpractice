@@ -21,7 +21,4 @@ class Solution(object):
             res += max(min(minL[i-1], minR[i+1]) - height[i], 0)
             temp[i] = min(minL[i-1], minR[i+1]) - height[i]
 
-        print(minL)
-        print(minR)
-        print(temp)
         return res
