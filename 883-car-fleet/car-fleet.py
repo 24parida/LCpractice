@@ -9,19 +9,17 @@ class Solution(object):
         
         cars = []
         for i in range(len(position)):
-            cars.append((position[i], speed[i]))
+            time_left = (target - position[i]) / float(speed[i])
+            cars.append((position[i], time_left))
         
         cars.sort()
 
         fleets = 1
         lc = cars.pop()
         while cars:
-            p, s = cars.pop()
-            time1 = (target - lc[0]) / float(lc[1])
-            time2 = (target-p) / float(s)
-
-            if time2 > time1:
-                lc = (p,s)
+            p, t = cars.pop()
+            if t > lc[1]:
+                lc = (p,t)
                 fleets +=1
 
         return fleets
