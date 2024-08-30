@@ -19,7 +19,6 @@ class Solution(object):
             p, s = cars.pop()
             time1 = (target - lc[0]) / float(lc[1])
             time2 = (target-p) / float(s)
-            print(time1, time2, p, s)
 
             if time2 > time1:
                 lc = (p,s)
