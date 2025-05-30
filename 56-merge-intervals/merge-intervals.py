@@ -3,7 +3,7 @@ class Solution:
         if len(intervals) <= 0:
             return [[]]
 
-        intervals = sorted(intervals, key = lambda i : i[0])
+        intervals.sort(key = lambda i : i[0])
 
         res = [intervals[0]]
         for start, end in intervals[1:]:
