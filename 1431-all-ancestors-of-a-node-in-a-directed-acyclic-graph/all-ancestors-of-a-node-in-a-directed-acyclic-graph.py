@@ -11,9 +11,7 @@ class Solution:
             temp_res = []
             neighbors = anc_map[i][:]
             visited = set()
-            while neighbors:
-                if i == 5: print(neighbors)
-                    
+            while neighbors:                    
                 neigh = neighbors.pop()
                 if neigh in visited: 
                     continue
