@@ -8,9 +8,7 @@ class Solution:
         directions = [(0, 1), (1, 0), (0, -1), (-1, 0)]
         res = []
         visited = set()
-
-        def isValid(x, y):
-            return (x,y) not in visited and x < n and x >= 0 and y < m and y >= 0
+        isValid = lambda x, y: (x,y) not in visited and x < n and x >= 0 and y < m and y >= 0
         
 
         while isValid(i, j) and len(res) < n * m:
