@@ -11,15 +11,17 @@ class Solution:
 
         def bfs(nodeX, nodeY):
             q = collections.deque([(nodeX, nodeY)])
+            visited.add((nodeX, nodeY))
             touches_border = False
             while q:
                 x,y = q.popleft()
                 if x == N-1 or y == M-1 or x == 0 or y == 0:
                     touches_border = True
-                visited.add((x, y))
+                
                 for nx, ny in directions:
                     new_x, new_y = x+nx, y+ny
                     if is_in_bounds(new_x, new_y) and (new_x, new_y) not in visited and grid[new_x][new_y] == 0:
+                        visited.add((new_x, new_y))
                         q.append((new_x, new_y))
             
             return not touches_border
