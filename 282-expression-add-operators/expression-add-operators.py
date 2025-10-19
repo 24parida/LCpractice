@@ -8,15 +8,14 @@ class Solution:
                     res.append("".join(sol))
                 return
 
-            for j in range(i, len(num)):
+            range_to_check = range(i, len(num)) if num[i] != '0' else range(i, i+1)
+            for j in range_to_check:
                 parsed_num = int(num[i:j+1])
 
                 if i == 0:
                     sol.append(str(parsed_num))
                     backtrack(j+1, parsed_num, parsed_num)
                     sol.pop()
-                    if num[i] == '0':
-                        break
                     continue
 
                 # try add
@@ -36,11 +35,5 @@ class Solution:
                 backtrack(j+1, new_num, new_prev)
                 sol.pop()
 
-                if num[i] == '0':
-                    break
-
         backtrack(0, 0, 0)
         return res
-
-            
-            
