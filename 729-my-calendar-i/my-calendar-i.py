@@ -1,43 +1,26 @@
-class Node:
-    def __init__(self):
-        self.left = None
-        self.right = None
-        self.start = None
-        self.end = None
-
+import bisect
 class MyCalendar:
 
     def __init__(self):
-        self.root = None
+        self.times = []
 
     def book(self, startTime: int, endTime: int) -> bool:
-        if not self.root:
-            self.root = Node()
-            self.root.start = startTime
-            self.root.end = endTime
-            return True
-
-        prev = None
-        curr = self.root
-        while curr:
-            if endTime <= curr.start:
-                prev = curr
-                curr = curr.left
-            elif startTime >= curr.end:
-                prev = curr
-                curr = curr.right 
+        l, r = 0, len(self.times) - 1   
+        while l <= r:
+            mid = (l + r) // 2
+            if self.times[mid][0] <= startTime:
+                l = mid + 1
             else:
-                return False
-            
-        if endTime <= prev.start:
-            prev.left = Node()
-            prev.left.start = startTime
-            prev.left.end = endTime
-        elif startTime >= prev.end:
-            prev.right = Node()
-            prev.right.start = startTime
-            prev.right.end = endTime
-        return True
+                r = mid - 1
+        
+        overlaps_end_prev = l > 0 and startTime < self.times[l-1][1]
+        overlaps_start_next = l < len(self.times) and endTime > self.times[l][0]
+
+        if overlaps_end_prev or overlaps_start_next:
+            return False
+        else:
+            self.times.insert(l, (startTime, endTime))
+            return True 
 
         
 
