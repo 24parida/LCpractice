@@ -15,18 +15,18 @@ class Solution:
                     graph[(j, x2, y2)].append((i, x, y))
         
 
+        
+        def dfs(node):
+            if node in self.visited:
+                return 0
+            self.visited.add(node)
+            largest_neighbor = 0
+            for neigh in graph[node]: largest_neighbor += dfs(neigh)
+            return 1 + largest_neighbor
+
         res = 1
         for bomb in list(graph.keys()):
-            visited = set()
-            def dfs(node):
-                if node in visited:
-                    return 0
-                visited.add(node)
-                largest_neighbor = 0
-                for neigh in graph[node]: largest_neighbor += dfs(neigh)
-                return 1 + largest_neighbor
-
-            local_res = dfs(bomb)
-            res = max(local_res, res)
+            self.visited = set()
+            res = max(dfs(bomb), res)
         
         return res
