@@ -10,7 +10,7 @@ class Solution:
             if not node:
                 return (True, float("inf"), float("-inf"))
             if not (node.left or node.right):
-                return (True, node.val, node.val) # isBST, minRight, maxLeft
+                return (True, node.val, node.val) # isBST, min, max
             
             isValidRight, minRight, maxRight = dfs(node.right)
             isValidLeft, minLeft, maxLeft = dfs(node.left)
