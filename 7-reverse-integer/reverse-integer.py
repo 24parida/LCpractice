@@ -7,4 +7,4 @@ class Solution:
             return r if r >= -2**31 else 0
         else:
             r = int(x[::-1])
-            return r if r <= 2**31 else 0
+            return r if r <= 2**31-1 else 0
