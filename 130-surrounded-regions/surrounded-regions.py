@@ -6,7 +6,6 @@ class Solution:
         N, M = len(board), len(board[0])
         self.N, self.M = N, M
 
-
         # top row, bottom row
         for x in [0, N-1]:
             for y in range(M):
@@ -16,19 +15,10 @@ class Solution:
         for x in range(N):
             for y in [0, M-1]:
                 self.bfs(x, y, 'T', board)
-
-        # for x in range(1, N-1):
-        #     for y in range(1, M-1):
-        #         if board[x][y] == 'O':
-        #             self.bfs(x, y, 'X', board)
         
         for x in range(N):
             for y in range(M):
                 board[x][y] = 'O' if board[x][y] == 'T' else 'X' 
-                # if board[x][y] == 'T':
-                #     board[x][y] = 'O'
-                # elif board[x][y] = 'O':
-                #     board[x][y] = 'X'
         
         return board
     
