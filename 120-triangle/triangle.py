@@ -1,18 +1,14 @@
 class Solution:
     def minimumTotal(self, triangle: List[List[int]]) -> int:
+        if len(triangle) == 1:
+            return triangle[0][0]
 
-        cache = {}
-        def dfs(i, j):
-            if (i,j) in cache:
-                return cache[(i,j)]
 
-            if j >= len(triangle):
-                return 0
-            
-            cur = triangle[j][i]
-            left = dfs(i, j+1)
-            right = dfs(i+1, j+1)
-            cache[(i, j)] = cur + min(right, left)
-            return cache[(i, j)]
+        dp = triangle[-1]
+        for j in range(len(triangle)-2, -1, -1):
+            new_dp = []
+            for i in range(len(triangle[j])):
+                new_dp.append(triangle[j][i] + min(dp[i], dp[i+1]))
+            dp = new_dp
         
-        return dfs(0, 0)
+        return dp[0]
