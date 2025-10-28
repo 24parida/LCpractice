@@ -17,11 +17,10 @@ class Solution:
                 node = q.popleft()
                 if node != None:
                     rightMost = node
-                    q.append(node.left)
-                    q.append(node.right)
+                    if node.left: q.append(node.left)
+                    if node.right: q.append(node.right)
             
-            if rightMost:
-                res.append(rightMost.val)
+            res.append(rightMost.val)
 
         return res
 
