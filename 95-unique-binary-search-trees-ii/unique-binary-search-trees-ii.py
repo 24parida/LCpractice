@@ -7,8 +7,6 @@
 class Solution:
     def generateTrees(self, n: int) -> List[Optional[TreeNode]]:
         def helper(left, right):
-            if left == right:
-                return [TreeNode(left)]
             if left > right:
                 return [None]
             
